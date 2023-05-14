@@ -4,27 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 
 <body>
+    <div class=login-container>
     <h1>Inicio de sesión</h1>
     <form action="{{ route('login') }}" method="post">
         @csrf
-        <label for="email">Nombre de usuario</label><br>
-        <input type="text" name="nombre_usuario" id="nombre_usuario" value="{{ old('nombre_usuario') }}"><br>
+        <div class="form-group">
+        <label class="form-label" for="email">Nombre de usuario:</label>
+        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" value="{{ old('nombre_usuario') }}">
         @error('nombre_usuario')
-            <small>{{ $message }}</small><br>
+            <small class="error">{{ $message }}</small>
         @enderror
-        <label for="password">Contraseña</label><br>
-        <input type="password" name="password" id="password"><br>
+        <label class="form-label" for="password">Contraseña:</label>
+        <input type="password" class="form-control" name="password" id="password">
         @error('password')
-            <small>{{ $message }}</small><br>
+            <small class="error">{{ $message }}</small>
         @enderror
 
-        <small>{{ $error ?? '' }}</small><br>
+        <small class="error">{{ $error ?? '' }}</small>
 
-        <input type="submit" value="Iniciar sesión">
+        <input type="submit" value="Iniciar sesión" class="btn btn-primary">
+        </div>
     </form>
+    </div>
 </body>
 
 @if ( session('usuario'))
