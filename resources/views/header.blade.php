@@ -21,6 +21,7 @@
                 <li class="menu-item"> <a href="{{ route('libros') }}">Libros</a> </li>
                 <li class="menu-item"> <a href="{{ route('autores') }}">Autores</a> </li>
                 <li class="menu-item"> <a href="{{ route('editoriales') }}">Editoriales</a> </li>
+                <li class="menu-item"> <a href="{{ route('generos') }}">Géneros</a> </li>
                 <div class="dropdown">
                     <li class="menu-item"> <a>{{ session('usuario')->nombre_usuario }}</a> </li>
                     <div class="dropdown-content">

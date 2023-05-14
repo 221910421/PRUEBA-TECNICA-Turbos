@@ -9,7 +9,7 @@ class autoresController extends Controller
 {
     public function autores(){
         $autores = autores::all();
-        return view('autores', ['autores' => $autores]);
+        return view('autores.autores', ['autores' => $autores]);
     }
 
     public function nuevoAutor(Request $request){
@@ -32,7 +32,7 @@ class autoresController extends Controller
 
     public function editarAutor($id){
         $autor = autores::find($id);
-        return view('editarAutor', ['autor' => $autor]);
+        return view('autores.editarAutor', ['autor' => $autor]);
     }
 
     public function actualizarAutor(Request $request, $id){
@@ -65,6 +65,6 @@ class autoresController extends Controller
     public function buscarAutor(Request $request){
         $nombre = $request->nombre;
         $autores = autores::where('nombre', 'like', '%'.$nombre.'%')->get();
-        return view('autores', ['autores' => $autores]);
+        return view('autores.autores', ['autores' => $autores]);
     }
 }

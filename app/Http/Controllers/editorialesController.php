@@ -10,7 +10,7 @@ class editorialesController extends Controller
     public function editoriales()
     {
         $editoriales = editoriales::all();
-        return view('editoriales', ['editoriales' => $editoriales]);
+        return view('editoriales.editoriales', ['editoriales' => $editoriales]);
     }
 
     public function nuevaEditorial(Request $request)
@@ -36,7 +36,7 @@ class editorialesController extends Controller
     public function editarEditorial($id)
     {
         $editorial = editoriales::find($id);
-        return view('editarEditorial', ['editorial' => $editorial]);
+        return view('editoriales.editarEditorial', ['editorial' => $editorial]);
     }
 
     public function actualizarEditorial(Request $request, $id)
@@ -72,6 +72,6 @@ class editorialesController extends Controller
     {
         $term_busqueda = $request->buscar;
         $editoriales = editoriales::where('nombre', 'like', '%' . $term_busqueda . '%')->get();
-        return view('editoriales', ['editoriales' => $editoriales]);
+        return view('editoriales.editoriales', ['editoriales' => $editoriales]);
     }
 }

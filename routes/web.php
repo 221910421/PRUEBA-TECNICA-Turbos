@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\usuariosController;
 use App\Http\Controllers\autoresController;
 use App\Http\Controllers\editorialesController;
+use App\Http\Controllers\generosController;
+use Monolog\Handler\RotatingFileHandler;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,17 +43,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-//Ruta para el dashboard de los libros (GET)
-Route::get('/libros', function () {
-    return view('libros');
-})->name('libros');
-
 //Ruta para el dashboard de los autores (GET)
 Route::get('/autores', [autoresController::class, 'autores'])->name('autores');
 
 //Ruta para crear un nuevo autor (GET)
 Route::get('/autores/nuevo', function () {
-    return view('nuevoAutor');
+    return view('autores.nuevoAutor');
 })->name('nuevoAutor');
 
 //Ruta para crear un nuevo autor (POST)
@@ -74,7 +71,7 @@ Route::get('/editoriales', [editorialesController::class, 'editoriales'])->name(
 
 //Ruta para crear una nueva editorial (GET)
 Route::get('/editoriales/nuevo', function () {
-    return view('nuevaEditorial');
+    return view('editoriales.nuevaEditorial');
 })->name('nuevaEditorial');
 
 //Ruta para crear una nueva editorial (POST)
@@ -91,3 +88,29 @@ Route::get('/editoriales/eliminar/{id}', [editorialesController::class, 'elimina
 
 //Ruta para buscar una editorial (POST)
 Route::post('/editoriales/buscar', [editorialesController::class, 'buscarEditorial'])->name('buscarEditorial');
+
+//Ruta para el dashboard de los generos (GET)
+Route::get('/generos', [generosController::class, 'generos'])->name('generos');
+
+//Ruta para crear un nuevo genero (GET)
+Route::get('/generos/nuevo', function () {
+    return view('generos.nuevoGenero');
+})->name('nuevoGenero');
+
+//Ruta para crear un nuevo genero (POST)
+Route::post('/generos/nuevo', [generosController::class, 'nuevoGenero'])->name('nuevoGenero');
+
+//Ruta para editar un genero (GET)
+Route::get('/generos/editar/{id}', [generosController::class, 'editarGenero'])->name('editarGenero');
+
+//Ruta para editar un genero (POST)
+Route::post('/generos/editar/{id}', [generosController::class, 'actualizarGenero'])->name('actualizarGenero');
+
+//Ruta para eliminar un genero (GET)
+Route::get('/generos/eliminar/{id}', [generosController::class, 'eliminarGenero'])->name('eliminarGenero');
+
+//Ruta para buscar un genero (POST)
+Route::post('/generos/buscar', [generosController::class, 'buscarGenero'])->name('buscarGenero');
+
+//Ruta para dashboard de los libros (GET)
+Route::get('/libros', [librosController::class, 'libros'])->name('libros');
