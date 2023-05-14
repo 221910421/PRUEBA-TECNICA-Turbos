@@ -16,7 +16,7 @@ class autoresController extends Controller
         $autor = new autores;
         $autor->nombre = $request->nombre;
         $autor->save();
-        return redirect()->route('autores');
+        return redirect()->route('autores')->with('success', 'Autor creado correctamente');
     }
 
     function editarAutor($id){
@@ -33,5 +33,21 @@ class autoresController extends Controller
         }catch(\Exception $ex){
             return redirect()->route('autores')->with('error', 'No se pudo actualizar el autor');
         }
+    }
+
+    function eliminarAutor($id){
+        try{
+            $autor = autores::find($id);
+            $autor->delete();
+            return redirect()->route('autores')->with('success', 'Autor eliminado correctamente');
+        }catch(\Exception $ex){
+            return redirect()->route('autores')->with('error', 'No se pudo eliminar el autor');
+        }
+    }
+
+    function buscarAutor(Request $request){
+        $nombre = $request->nombre;
+        $autores = autores::where('nombre', 'like', '%'.$nombre.'%')->get();
+        return view('autores', ['autores' => $autores]);
     }
 }

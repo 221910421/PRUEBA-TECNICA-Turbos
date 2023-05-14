@@ -61,3 +61,9 @@ Route::get('/autores/editar/{id}', [autoresController::class, 'editarAutor'])->n
 
 //Ruta para editar un autor (POST)
 Route::post('/autores/editar/{id}', [autoresController::class, 'actualizarAutor'])->name('actualizarAutor');
+
+//Ruta para eliminar un autor (GET)
+Route::get('/autores/eliminar/{id}', [autoresController::class, 'eliminarAutor'])->name('eliminarAutor');
+
+//Ruta para buscar un autor (POST)
+Route::post('/autores/buscar', [autoresController::class, 'autores'])->name('buscarAutor');

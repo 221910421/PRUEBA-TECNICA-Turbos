@@ -241,3 +241,31 @@ header {
     text-decoration: none;
     display: block;
 }
+
+.buscar{
+    width: 450px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buscar input[type="text"]{
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
