@@ -24,7 +24,7 @@
                 <div class="dropdown">
                     <li class="menu-item"> <a>{{ session('usuario')->nombre_usuario }}</a> </li>
                     <div class="dropdown-content">
-                        <a href="{{ route('login') }}">Cerrar sesión</a>
+                        <a href="{{ route('logout') }}">Cerrar sesión</a>
                     </div>
             </ul>
         </nav>

@@ -34,7 +34,7 @@
 
 @if ( session('usuario'))
     <script>
-        window.location = "{{ route('dashboard') }}";
+        window.location = "{{ route('index') }}";
     </script>
 @endif
 

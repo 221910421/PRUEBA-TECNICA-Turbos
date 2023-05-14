@@ -128,3 +128,6 @@ Route::get('/libros/eliminar/{id}', [librosController::class, 'eliminarLibro'])-
 
 //Ruta para buscar un libro (POST)
 Route::post('/libros/buscar', [librosController::class, 'buscarLibro'])->name('buscarLibro');
+
+//Ruta para cerrar sesion (GET)
+Route::get('/logout', [usuariosController::class, 'logout'])->name('logout');

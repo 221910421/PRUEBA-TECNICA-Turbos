@@ -18,7 +18,6 @@ class CreateUsuariosTable extends Migration
             $table->string("nombre_usuario", 16)->unique();
             $table->string("correo", 50);
             $table->string("contrasena");
-            $table->string("foto_perfil", 100)->nullable();
             $table->timestamps();
         });
     }

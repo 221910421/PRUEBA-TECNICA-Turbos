@@ -33,7 +33,7 @@ class usuariosController extends Controller
                 // Iniciar sesión
                 $request->session()->put('usuario', $usuario);
                 // Redireccionar al dashboard
-                return redirect()->route('dashboard');
+                return redirect()->route('index');
             } else {
                 // Redireccionar al login con un mensaje de error
                 return view('login')->with('error', 'La contraseña es incorrecta');
@@ -71,5 +71,10 @@ class usuariosController extends Controller
         $usuario->save();
 
         return redirect()->route('login')->with('error', 'El usuario se registró correctamente');
+    }
+
+    public function logout(Request $request){
+        $request->session()->forget('usuario');
+        return redirect()->route('login');
     }
 }
