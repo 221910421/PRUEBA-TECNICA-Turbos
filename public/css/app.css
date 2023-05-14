@@ -269,3 +269,11 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+
+.text-danger{
+    color: red;
+}
+
+.text-success{
+    color: green;
+}

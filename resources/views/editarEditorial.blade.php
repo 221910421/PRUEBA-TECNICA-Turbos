@@ -3,15 +3,14 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="display-4">Crear nuevo autor</h1>
+                <h1 class="display-4">Editar editorial</h1>
             </div>
         </div>
-
-        <form action="{{ route('nuevoAutor') }}" method="POST">
+        <form action="{{ route('actualizarEditorial', ['id' => $editorial->id]) }}" method="POST">
             @csrf
             <div class="form-group">
-                <label class="form-label" for="nombre">Nombre del autor*:</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del autor">
+                <label class="form-label" for="nombre">Nombre de la editorial*:</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la editorial" value="{{ $editorial->nombre }}">
                 @error('nombre')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror

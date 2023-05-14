@@ -11,6 +11,9 @@
             <div class="form-group">
                 <label class="form-label" for="nombre">Nombre del autor*:</label>
                 <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del autor" value="{{ $autor->nombre }}">
+                @error('nombre')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </form>

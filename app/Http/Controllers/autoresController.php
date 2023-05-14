@@ -7,24 +7,41 @@ use App\Models\autores;
 
 class autoresController extends Controller
 {
-    function autores(){
+    public function autores(){
         $autores = autores::all();
         return view('autores', ['autores' => $autores]);
     }
 
-    function nuevoAutor(Request $request){
-        $autor = new autores;
-        $autor->nombre = $request->nombre;
-        $autor->save();
-        return redirect()->route('autores')->with('success', 'Autor creado correctamente');
+    public function nuevoAutor(Request $request){
+        $request->validate([
+            'nombre' => 'required|max:50',
+        ],[
+            'nombre.required' => 'El campo nombre es obligatorio',
+            'nombre.max' => 'El campo nombre no puede tener más de 50 caracteres',
+        ]);
+
+        try{
+            $autor = new autores();
+            $autor->nombre = $request->nombre;
+            $autor->save();
+            return redirect()->route('autores')->with('success', 'Autor creado correctamente');
+        }catch(\Exception $ex){
+            return redirect()->route('autores')->with('error', 'No se pudo crear el autor');
+        }
     }
 
-    function editarAutor($id){
+    public function editarAutor($id){
         $autor = autores::find($id);
         return view('editarAutor', ['autor' => $autor]);
     }
 
-    function actualizarAutor(Request $request, $id){
+    public function actualizarAutor(Request $request, $id){
+        $request->validate([
+            'nombre' => 'required|max:50',
+        ],[
+            'nombre.required' => 'El campo nombre es obligatorio',
+            'nombre.max' => 'El campo nombre no puede tener más de 50 caracteres',
+        ]);
         try{
             $autor = autores::find($id);
             $autor->nombre = $request->nombre;
@@ -35,7 +52,7 @@ class autoresController extends Controller
         }
     }
 
-    function eliminarAutor($id){
+    public function eliminarAutor($id){
         try{
             $autor = autores::find($id);
             $autor->delete();
@@ -45,7 +62,7 @@ class autoresController extends Controller
         }
     }
 
-    function buscarAutor(Request $request){
+    public function buscarAutor(Request $request){
         $nombre = $request->nombre;
         $autores = autores::where('nombre', 'like', '%'.$nombre.'%')->get();
         return view('autores', ['autores' => $autores]);

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\usuariosController;
 use App\Http\Controllers\autoresController;
+use App\Http\Controllers\editorialesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,4 +67,27 @@ Route::post('/autores/editar/{id}', [autoresController::class, 'actualizarAutor'
 Route::get('/autores/eliminar/{id}', [autoresController::class, 'eliminarAutor'])->name('eliminarAutor');
 
 //Ruta para buscar un autor (POST)
-Route::post('/autores/buscar', [autoresController::class, 'autores'])->name('buscarAutor');
+Route::post('/autores/buscar', [autoresController::class, 'buscarAutor'])->name('buscarAutor');
+
+//Ruta para el dashboard de las editoriales (GET)
+Route::get('/editoriales', [editorialesController::class, 'editoriales'])->name('editoriales');
+
+//Ruta para crear una nueva editorial (GET)
+Route::get('/editoriales/nuevo', function () {
+    return view('nuevaEditorial');
+})->name('nuevaEditorial');
+
+//Ruta para crear una nueva editorial (POST)
+Route::post('/editoriales/nuevo', [editorialesController::class, 'nuevaEditorial'])->name('nuevaEditorial');
+
+//Ruta para editar una editorial (GET)
+Route::get('/editoriales/editar/{id}', [editorialesController::class, 'editarEditorial'])->name('editarEditorial');
+
+//Ruta para editar una editorial (POST)
+Route::post('/editoriales/editar/{id}', [editorialesController::class, 'actualizarEditorial'])->name('actualizarEditorial');
+
+//Ruta para eliminar una editorial (GET)
+Route::get('/editoriales/eliminar/{id}', [editorialesController::class, 'eliminarEditorial'])->name('eliminarEditorial');
+
+//Ruta para buscar una editorial (POST)
+Route::post('/editoriales/buscar', [editorialesController::class, 'buscarEditorial'])->name('buscarEditorial');
