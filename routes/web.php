@@ -5,7 +5,7 @@ use App\Http\Controllers\usuariosController;
 use App\Http\Controllers\autoresController;
 use App\Http\Controllers\editorialesController;
 use App\Http\Controllers\generosController;
-use Monolog\Handler\RotatingFileHandler;
+use App\Http\Controllers\librosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,7 @@ use Monolog\Handler\RotatingFileHandler;
 |
 */
 
-route::get('/', function () {
-    return view('login');
-});
+route::get('/', [librosController::class, 'libros'])->name('index');
 
 //Ruta para el login de los usuarios (GET)
 Route::get('/login', function () {
@@ -37,11 +35,6 @@ Route::get('/registro', function () {
 
 //Ruta para el registro de los usuarios (POST)
 Route::post('/registro', [usuariosController::class, 'registro'])->name('registro');
-
-//Ruta para el dashboard de los usuarios (GET)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 //Ruta para el dashboard de los autores (GET)
 Route::get('/autores', [autoresController::class, 'autores'])->name('autores');
@@ -114,3 +107,24 @@ Route::post('/generos/buscar', [generosController::class, 'buscarGenero'])->name
 
 //Ruta para dashboard de los libros (GET)
 Route::get('/libros', [librosController::class, 'libros'])->name('libros');
+
+//Ruta para crear un nuevo libro (GET)
+Route::get('/libros/nuevo', [librosController::class, 'nuevoLibro'])->name('nuevoLibro');
+
+//Ruta para crear un nuevo libro (POST)
+Route::post('/libros/nuevo', [librosController::class, 'guardarLibro'])->name('guardarLibro');
+
+//Ruta para ver la informacion de un libro (GET)
+Route::get('/libros/ver/{id}', [librosController::class, 'verLibro'])->name('verLibro');
+
+//Ruta para editar un libro (GET)
+Route::get('/libros/editar/{id}', [librosController::class, 'editarLibro'])->name('editarLibro');
+
+//Ruta para editar un libro (POST)
+Route::post('/libros/editar/{id}', [librosController::class, 'actualizarLibro'])->name('actualizarLibro');
+
+//Ruta para eliminar un libro (GET)
+Route::get('/libros/eliminar/{id}', [librosController::class, 'eliminarLibro'])->name('eliminarLibro');
+
+//Ruta para buscar un libro (POST)
+Route::post('/libros/buscar', [librosController::class, 'buscarLibro'])->name('buscarLibro');

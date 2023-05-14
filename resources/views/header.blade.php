@@ -11,13 +11,12 @@
 
     <header>
         <div class="logo">
-            <a href="{{ route('dashboard') }}">
+            <a href="{{ route('index') }}">
                 Aplicación biblioteca
             </a>
         </div>
         <nav class="menu">
             <ul class="menu-list">
-                <li class="menu-item"> <a href="{{ route('dashboard') }}">Inicio</a> </li>
                 <li class="menu-item"> <a href="{{ route('libros') }}">Libros</a> </li>
                 <li class="menu-item"> <a href="{{ route('autores') }}">Autores</a> </li>
                 <li class="menu-item"> <a href="{{ route('editoriales') }}">Editoriales</a> </li>
